@@ -1,0 +1,29 @@
+{
+  "name": "backend-biblioteca",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-validator": "^6.12.0",
+    "mongoose": "^5.12.14",
+    "nodemon": "^2.0.7",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rjguerreroh/app-biblioteca-st.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rjguerreroh/app-biblioteca-st/issues"
+  },
+  "homepage": "https://github.com/rjguerreroh/app-biblioteca-st#readme",
+  "description": ""
+}
