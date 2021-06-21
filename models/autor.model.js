@@ -5,10 +5,9 @@ const AutorSchema = Schema({
         type: String,
         required: true
     },
-    ciudad_procedencia:{
+    ciudad:{
         type: Schema.Types.ObjectId,
-        ref: 'Ciudad',
-        require: true
+        ref: 'Ciudad'
     },
     telefono: {
         type: String,
@@ -22,7 +21,7 @@ const AutorSchema = Schema({
         type: String,
         require: true
     }
-}, { collection: 'Autores'});
+}, { collection: 'autores'});
 
 AutorSchema.method('toJSON', function() {
     const { __v, ...object} = this.toObject();
