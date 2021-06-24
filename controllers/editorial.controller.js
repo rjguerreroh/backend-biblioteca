@@ -36,17 +36,8 @@ const crearEditorial = async( req, res ) => {
 };
 
 const updateEditorial = async(req,res) => {
-    // try {
-    //     const id = req.params.id;
-    //     const old = await Editorial.findById(id);
-    //     return res.json({ok:true, id, old});
-    // } catch (error) {
-    //     console.log(error);
-    //     return res.status(400).json({ ok: false, msg: "Ocurrio un error en el proceso, contactar con el Administrador del sistema"});
-    // }
     try {        
         const id = req.params.id;
-        // return res.json({id});
         const editorial = await Editorial.findById(id);
         const { nombre, email, telefono, ...resto } = req.body;
 

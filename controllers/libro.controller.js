@@ -1,10 +1,9 @@
 const Libro = require('../models/libro.model');
 const Autor = require('../models/autor.model');
 const Editorial = require('../models/editorial.model');
-const { findOne } = require('../models/libro.model');
 
 const getLibros = async ( req, res ) => {
-    const libros = await Libro.find();
+    const libros = await Libro.find().populate('autor','nombre').populate('editorial','nombre');
     res.json({
         ok: true,
         libros
@@ -34,6 +33,8 @@ const crearLibro = async ( req, res ) => {
             autor: autorEncontrado.id,
             ...resto
         });
+        console.log('req body', req.body, resto);
+        console.log('Guardar libro', libro);
 
         await libro.save();
         
@@ -57,14 +58,25 @@ const updateLibro = async ( req, res ) => {
 }
 
 const eliminarLibro = async ( req, res ) => {
-    res.json({
-        ok: true,
-        msg: "lIBRO eliminado",
-        id: req.params.id
-    });
+    const id = req.params.id;
+    try {
+        const existe_libro = await Libro.findById(id);
+        if(!existe_libro) {
+            return res.status(400).json({
+                ok: false,
+                msg: "Libro no encontrado por id"
+            })
+        }
+        await Libro.findByIdAndDelete(id);
+        res.json({
+            ok: true,
+            msg: 'Libro eliminado'
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(400).json({ ok: false, msg: "Ocurrio un error en el proceso, contactar con el Administrador del sistema"});
+    }
 }
-
-
 
 module.exports = {
     getLibros,

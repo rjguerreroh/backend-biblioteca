@@ -9,6 +9,10 @@ const LibroSchema = Schema({
         type: String,
         require: true
     },
+    genero:{
+        type: String,
+        require: true
+    },
     numero_paginas: {
         require: true,
         type: String
@@ -16,10 +20,12 @@ const LibroSchema = Schema({
     autor: {
         type: Schema.Types.ObjectId,
         ref: 'Autor',
+        require: true
     },
     editorial: {
         type: Schema.Types.ObjectId,
         ref: 'Editorial',
+        require: true
     }
 }, { collection: 'libros'});
 
